@@ -41,10 +41,10 @@ if [ "${BUILD}x" == "yesx" ]; then
 	if [ "${UPLOAD}x" != "nonex" ]; then
 		echo "Upload packages to ${UPLOAD}..."
 		for deb in /hypersrc/hyperd/package/debian/hyperstart/*.deb; do
-			aws s3 cp $deb s3://hypercontainer-build/${UPLOAD}/$(basename $deb)
+			aws s3 cp $deb s3://codius-hyper-build/${UPLOAD}/$(basename $deb)
 		done
 		for deb in /hypersrc/hyperd/package/debian/hypercontainer/*.deb; do
-			aws s3 cp $deb s3://hypercontainer-build/${UPLOAD}/$(basename $deb)
+			aws s3 cp $deb s3://codius-hyper-build/${UPLOAD}/$(basename $deb)
 		done
 	fi
 fi

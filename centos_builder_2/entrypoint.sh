@@ -46,10 +46,10 @@ if [ "${BUILD}x" == "yesx" ]; then
 	if [ "${UPLOAD}x" != "nonex" ]; then
 		echo "Upload packages to ${UPLOAD}..."
 		for rpm in ~makerpm/rpmbuild/RPMS/x86_64/* ; do
-			aws s3 cp $rpm s3://codius/${UPLOAD}/$(basename $rpm)
+			aws s3 cp $rpm s3://codius-hyper-build/${UPLOAD}/$(basename $rpm)
 		done
 		for rpm in ~makerpm/rpmbuild/SRPMS/* ; do
-			aws s3 cp $rpm s3://codius/${UPLOAD}/$(basename $rpm)
+			aws s3 cp $rpm s3://codius-hyper-build/${UPLOAD}/$(basename $rpm)
 		done
 	fi
 fi
