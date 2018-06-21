@@ -4,8 +4,11 @@ MAINTAINER Hyper Developers <dev@hyper.sh>
 RUN yum install -y epel-release && yum update -y && \
 	yum install -y @development-tools git centos-packager rpmdevtools \
 	automake autoconf gcc make glibc-devel glibc-devel.i686 device-mapper-devel pcre-devel libsepol-devel libselinux-devel systemd-devel sqlite-devel libvirt-devel \
-	gcc-c++ zlib-devel libcap-devel libattr-devel librbd1-devel libtool awscli && \
+	gcc-c++ zlib-devel libcap-devel libattr-devel librbd1-devel libtool curl python36 && \
 	yum clean all
+RUN curl -fsSL https://bootstrap.pypa.io/3.3/get-pip.py -o get-pip.py
+RUN python36 get-pip.py
+RUN env PATH=/usr/local/bin:${PATH} pip install awscli==1.15.19
 RUN curl -sL https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz | tar -C /usr/local -zxf -
 RUN /usr/sbin/useradd makerpm; usermod -a -G mock makerpm; su makerpm -c 'rpmdev-setuptree'
 
