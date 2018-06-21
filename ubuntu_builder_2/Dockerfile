@@ -20,5 +20,3 @@ ADD entrypoint.sh /
 USER makedeb
 WORKDIR /hypersrc
 ENTRYPOINT ["/entrypoint.sh"]
-DIR /hypersrc
-ENTRYPOINT ["/entrypoint.sh"]
